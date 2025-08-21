@@ -1,22 +1,37 @@
 CalculatorApp
-En enkel miniräknare byggd med ASP.NET Core MVC för att träna på grunderna Model-View-Controller mönstret.
 
-Funktioner
-- Ange två tal och välj operation (addition, subtraktion, multiplikation eller division).
-- Resultatet visas direkt på sidan.
-- Strukturerat koden så den lätt kan byggas ut med fler funktioneri framtiden.
+A simple calculator built with ASP.NET Core MVC to practice the fundamentals of the Model–View–Controller (MVC) pattern.
 
-Kom igång
-1. Klona eller ladda ner repo.
-2. Öppna lösningen i Visual Studio (eller kör dotnet run från terminalen i projektmappen).
-3. Öppna webbläsaren på https://localhost:xxxx för att testa miniräknaren.
+Features
 
-LÄRDOMAR
+Enter two numbers and choose an operation (addition, subtraction, multiplication, or division).
 
-Arkitektur MVC (Model View Controller)
+The result is displayed directly on the page.
 
-- Model: beskriver vilken data kalkylatorn hanterar (t.ex. tal A, tal B, vald operation t.ex multiplikation, resultat). Modellen bestämmer vad kalkylatorn behöver veta för att kunna räkna.
-- Controller: tar emot användarens input från modellen, den utför logiken (räknar ut resultatet baserat på vald operation) och skickar tillbaka datan till vyn.
-- View: är det som användaren ser (formulär med två tal, en lista av operationer och en plats för resultatet).
+Structured code that can easily be extended with new features in the future.
 
-Koden blir tydligt separerad: Modellen sätter ramarna, controllern utför logiken, vyn ansvarar för presentationen. 
+Getting Started
+
+Clone or download the repository.
+
+Open the solution in Visual Studio (or run dotnet run from the terminal in the project folder).
+
+Open your browser at https://localhost:xxxx to test the calculator.
+
+Lessons Learned
+
+MVC Architecture (Model–View–Controller):
+
+Model: Defines the data the calculator works with (e.g., number A, number B, selected operation, result). The model specifies what the calculator needs to know in order to perform calculations.
+
+Controller: Receives user input from the model, executes the logic (performs the calculation based on the selected operation), and returns data to the view.
+
+View: The part the user sees (a form with two numbers, a list of operations, and a field for the result).
+
+This clear separation makes the code easier to maintain:
+
+The model sets the structure,
+
+The controller handles the logic,
+
+The view manages the presentation.
