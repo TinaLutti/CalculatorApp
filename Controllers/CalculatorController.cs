@@ -34,11 +34,12 @@ public IActionResult Index(Operation model)
                 case Operation.OperationType.Division:
                     if (model.Operand2 == 0)
                     {
-                        ModelState.AddModelError(nameof(model.Operand2), "It´s not possible to divide 0");
+                        ModelState.AddModelError(nameof(model.Operand2), "Cannot divide by zero");
+                        ModelState.AddModelError("", "Division by zero detected!");
                     }
                     else
                     {
-                        model.Result = model.Operand1 / model.Operand2;                       
+                        model.Result = Math.Round(model.Operand1 / model.Operand2, 10); // Avoid floating point precision issues
                     }
                     break;
 
