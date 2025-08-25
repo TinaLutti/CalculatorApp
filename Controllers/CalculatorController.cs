@@ -15,6 +15,19 @@ public class CalculatorController : Controller
 [HttpPost]
 public IActionResult Index(Operation model)
     {
+        Console.WriteLine($"Operand1: {model.Operand1}");
+        Console.WriteLine($"Operand2: {model.Operand2}");
+        Console.WriteLine($"SelectedOperation: {model.SelectedOperation}");
+        Console.WriteLine($"ModelState.IsValid: {ModelState.IsValid}");
+
+        if (!ModelState.IsValid)
+        {
+            foreach (var error in ModelState)
+            {
+                Console.WriteLine($"Field: {error.Key}, Errors: {string.Join(", ", error.Value.Errors.Select(e => e.ErrorMessage))}");
+            }
+        }
+
         if (ModelState.IsValid)
         {
             switch (model.SelectedOperation)
@@ -35,7 +48,6 @@ public IActionResult Index(Operation model)
                     if (model.Operand2 == 0)
                     {
                         ModelState.AddModelError(nameof(model.Operand2), "Cannot divide by zero");
-                        ModelState.AddModelError("", "Division by zero detected!");
                     }
                     else
                     {
