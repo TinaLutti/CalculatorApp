@@ -1,7 +1,4 @@
-﻿console.log("Calculator.js loaded successfully!");
-
-
-let currentValue = "0";
+﻿let currentValue = "0";
 let previousValue = null;
 let operation = null;
 let waitingForValue = false;
@@ -33,23 +30,7 @@ function inputOperation(op) {
     operation = op;
     waitingForValue = true;
 }
-function equals() {
-    console.log("Equals clicked!");
-    console.log("operation:", operation);
-    console.log("previousValue:", previousValue);
-    console.log("currentValue:", currentValue);
-    console.log("waitingForValue:", waitingForValue);
 
-    if (operation && previousValue !== null && !waitingForValue) {
-        console.log("Calling calculate()");
-        calculate();
-        operation = null;
-        previousValue = null;
-        waitingForValue = false;
-    } else {
-        console.log("Conditions not met for calculate()");
-    }
-}
 function calculate() {
     let result;
     let prev = parseFloat(previousValue);
@@ -78,14 +59,8 @@ function calculate() {
     updateDisplay();
 }
 function equals() {
-    console.log("Equals clicked!");
-    console.log("operation:", operation);
-    console.log("previousValue:", previousValue);
-    console.log("currentValue:", currentValue);
-    console.log("waitingForValue:", waitingForValue);
 
     if (operation && previousValue !== null && !waitingForValue) {
-        console.log("Calling calculate()");
         calculate();
         operation = null;
         previousValue = null;
@@ -93,6 +68,13 @@ function equals() {
     } else {
         console.log("Conditions not met for calculate()");
     }
+}
+function clearCalculator() {
+    currentValue = "0";
+    previousValue = null;
+    operation = null;
+    waitingForValue = false;
+    updateDisplay();
 }
 
 

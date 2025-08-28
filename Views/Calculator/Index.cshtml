@@ -1,22 +1,10 @@
 ﻿@model CalculatorApp.Models.Operation
 
 <div class="calculator">
-    <form asp-action="Index" method="post">
-    <div class="display" id="display">
-        @if (Model?.Result != null)
-        {
-            @Model.Result
-        }
-        else
-        {
-            @:0
-        }
-    </div>
 
-        <div class="temp-inputs">
-            <input asp-for="Operand1" type="number" placeholder="First number" />
-            <input asp-for="Operand2" type="number" placeholder="Second number" />
-        </div>
+        <div class="display" id="display">
+            0
+        </div>    
 
     <div class="operations-row">
             <button type="button" onclick="inputOperation('+')" class="Addition">
@@ -46,12 +34,12 @@
             <button type="button" onclick="inputNumber(1)" class="number">1</button>
             <button type="button" onclick="inputNumber(2)" class="number">2</button>
             <button type="button" onclick="inputNumber(3)" class="number">3</button>
+        <button type="button" onclick="clearCalculator()" class="clear">C</button>
             <button type="button" onclick="inputNumber(0)" class="number">0</button>
             <button type="button" onclick="equals()" class="equals">=</button>
     </div>
-     
+   
 
-    </form>
 </div>
 
 <script src="~/js/calculator.js"></script>
