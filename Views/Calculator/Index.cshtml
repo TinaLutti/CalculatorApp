@@ -1,5 +1,10 @@
 ﻿@model CalculatorApp.Models.Operation
 
+@{
+    Layout = "_CalculatorLayout";
+    ViewData["Title"] = "Calculator";
+}
+
 <div class="calculator">
 
         <div class="display" id="display">
@@ -34,7 +39,7 @@
             <button type="button" onclick="inputNumber(1)" class="number">1</button>
             <button type="button" onclick="inputNumber(2)" class="number">2</button>
             <button type="button" onclick="inputNumber(3)" class="number">3</button>
-        <button type="button" onclick="clearCalculator()" class="clear">C</button>
+            <button type="button" onclick="clearCalculator()" class="clear">C</button>
             <button type="button" onclick="inputNumber(0)" class="number">0</button>
             <button type="button" onclick="equals()" class="equals">=</button>
     </div>
@@ -42,4 +47,6 @@
 
 </div>
 
-<script src="~/js/calculator.js"></script>
+@section Scripts {
+    <script src="~/js/calculator.js" asp-append-version="true" defer></script>
+}
