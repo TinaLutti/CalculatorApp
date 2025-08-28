@@ -1,8 +1,8 @@
-CalculatorApp
+#CalculatorApp
 
 A simple calculator built with ASP.NET Core MVC to practice and showcase the fundamentals of the Model–View–Controller (MVC) pattern.
 
-🚀 Features
+##🚀 Features
 
 Perform basic arithmetic operations: addition, subtraction, multiplication, and division.
 
@@ -12,7 +12,7 @@ Clear (C) button to reset input and result.
 
 Structured code that can easily be extended with new features.
 
-🛠 Tech Stack
+##🛠 Tech Stack
 
 C# / .NET 8
 
@@ -22,7 +22,7 @@ Razor Views
 
 Visual Studio 2022
 
-📖 Lessons Learned
+##📖 Lessons Learned
 
 Separation of concerns with MVC:
 
@@ -34,7 +34,7 @@ View – manages the user interface.
 
 Clear structure makes the code easier to extend and maintain.
 
-🔮 Planned Features (Roadmap)
+##🔮 Planned Features (Roadmap)
 
 Display calculation history.
 
@@ -44,7 +44,7 @@ Responsive design and improved styling.
 
 Unit tests for calculator logic.
 
-▶ Getting Started
+##▶ Getting Started
 
 Clone or download the repository.
 
