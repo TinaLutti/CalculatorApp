@@ -4,13 +4,26 @@ let operation = null;
 let waitingForValue = false;
 
 function inputNumber(number) {
+    console.log("currentValue:", currentValue, "type:", typeof currentValue);
+    if (number === ",") number = ".";
+
+    if (number === "." && String(currentValue).includes(".")) {
+        return;
+    }
+
     if (waitingForValue) {
         currentValue = number.toString();
         waitingForValue = false;
     } else if (currentValue === "0") {
-        currentValue = number.toString();
+        if (number === ".") {
+            currentValue = "0.";
+        } else if (number === "0") {
+            currentValue = "0";
+        } else {
+            currentValue = number;
+        }
     } else {
-        currentValue += number.toString();
+        currentValue += number;
     }
     updateDisplay();
 }
@@ -53,7 +66,8 @@ function calculate() {
             return;
     }
 
-    currentValue = result.toString();
+    currentValue = Math.round(result * 100000000) / 100000000;
+    currentValue = currentValue.toString();
     previousValue = null;
     operation = null;
     updateDisplay();
