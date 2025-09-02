@@ -32,19 +32,22 @@ body {
     box-shadow: inset 2px 2px 5px rgba(0,0,0,0.8);
     text-shadow: 0 0 2px #ff0000, 0 0 5px #ff0000, 0 0 8px #ff0000, 0 0 12px #ff4444;
 }
-.operations-row {
+
+.calculator-grid{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     gap: 5px;
-    border-radius: 10px;
-    margin-bottom: 10px;
 }
 
-.numbers-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
-    border-radius: 10px;
+.plus-tall, .equals-tall {
+    grid-row: span 2;
+    height: auto;
+    min-height: 95px;
+}
+
+.zero-wide {
+    grid-column: span 2;
 }
 
 button {
@@ -81,3 +84,4 @@ button:active {
     background-color: #333333; 
     color: #ffffff;
 }
+
