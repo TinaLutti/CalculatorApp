@@ -4,7 +4,8 @@ let operation = null;
 let waitingForValue = false;
 
 function inputNumber(number) {
-    console.log("currentValue:", currentValue, "type:", typeof currentValue);
+
+    number = number.toString();
     if (number === ",") number = ".";
 
     if (number === "." && String(currentValue).includes(".")) {
@@ -29,8 +30,15 @@ function inputNumber(number) {
 }
 
 function updateDisplay() {
-    document.getElementById("display").textContent = currentValue;
-
+    if (previousValue && operation) {
+        if (waitingForValue) {
+            document.getElementById("display").textContent = previousValue + operation;
+        } else {
+            document.getElementById("display").textContent = previousValue + operation + currentValue;
+        }
+    } else {
+        document.getElementById("display").textContent = currentValue;
+    }
 }
 
 function inputOperation(op) {
@@ -39,11 +47,12 @@ function inputOperation(op) {
     }
     else if (!waitingForValue) {
         calculate();
+        previousValue = currentValue;
     }
     operation = op;
     waitingForValue = true;
+    updateDisplay();
 }
-
 function calculate() {
     let result;
     let prev = parseFloat(previousValue);
@@ -60,8 +69,16 @@ function calculate() {
             result = prev * curr;
             break;
         case '/':
+            if (curr === 0) {
+                document.getElementById("display").textContent = "Error";
+                currentValue = "0";
+                previousValue = null;
+                operation = null;
+                return;
+            }
             result = prev / curr;
             break;
+
         default:
             return;
     }
