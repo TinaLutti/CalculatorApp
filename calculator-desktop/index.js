@@ -5,7 +5,7 @@ function createWindow() {
     width: 320,
     height: 350,
     frame: false, // Ingen chrome alls
-    resizable: false, // Fast storlek
+    resizable: true,
     alwaysOnTop: true, // Alltid ovanpå (som en widget)
     webPreferences: {
       nodeIntegration: true,

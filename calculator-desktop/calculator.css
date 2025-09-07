@@ -12,6 +12,7 @@ body {
   height: 450px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   border: 1px solid #666;
+  -webkit-app-region: drag;
 }
 
 .display {
@@ -76,4 +77,9 @@ button:active {
 .equals {
   background-color: #333333;
   color: #ffffff;
+}
+.display,
+.calculator-grid,
+button {
+  -webkit-app-region: no-drag;
 }
