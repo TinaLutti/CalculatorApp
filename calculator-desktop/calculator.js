@@ -185,25 +185,19 @@ function handleBackspace() {
   updateDisplay();
 }
 
-function minimizeWindow() {
-  console.log("Minimize clicked!"); // Debug
-  const { remote } = require("electron");
-  remote.getCurrentWindow().minimize();
+const { ipcRenderer } = require("electron");
+
+async function minimizeApp() {
+  console.log("Minimize clicked!");
+  await ipcRenderer.invoke("minimize-window");
 }
 
-function maximizeWindow() {
-  console.log("Maximize clicked!"); // Debug
-  const { remote } = require("electron");
-  const win = remote.getCurrentWindow();
-  if (win.isMaximized()) {
-    win.unmaximize();
-  } else {
-    win.maximize();
-  }
+async function maximizeApp() {
+  console.log("Maximize clicked!");
+  await ipcRenderer.invoke("maximize-window");
 }
 
-function closeWindow() {
-  console.log("Close clicked!"); // Debug
-  const { remote } = require("electron");
-  remote.getCurrentWindow().close();
+async function closeApp() {
+  console.log("Close clicked!");
+  await ipcRenderer.invoke("close-window");
 }
