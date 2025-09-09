@@ -2,17 +2,20 @@ const { app, BrowserWindow } = require("electron");
 
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 320,
-    height: 350,
-    frame: false, // Ingen chrome alls
+    width: 340,
+    height: 380,
+    backgroundColor: "#888888",
+    titleBarStyle: "default", // Standard titelbar
     resizable: true,
-    alwaysOnTop: true, // Alltid ovanpå (som en widget)
+    alwaysOnTop: true,
+    title: "",
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
     },
   });
 
+  mainWindow.setMenuBarVisibility(false);
   mainWindow.loadFile("calculator.html");
 }
 

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: transparent;
+  background: #888888;
   overflow: hidden;
 }
 
@@ -9,9 +9,7 @@ body {
   background: linear-gradient(145deg, #999999, #777777);
   padding: 15px;
   width: 290px;
-  height: 450px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 1px solid #666;
+  height: 315px;
   -webkit-app-region: drag;
 }
 
@@ -30,21 +28,25 @@ body {
   text-shadow: 0 0 2px #ff0000, 0 0 5px #ff0000, 0 0 8px #ff0000,
     0 0 12px #ff4444;
 }
+
 .calculator-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   gap: 5px;
 }
+
 .plus-tall,
 .equals-tall {
   grid-row: span 2;
   height: auto;
   min-height: 95px;
 }
+
 .zero-wide {
   grid-column: span 2;
 }
+
 button {
   height: 45px;
   border: 1px solid #666666;
@@ -54,15 +56,19 @@ button {
   cursor: pointer;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   transition: all 0.1s ease;
+  -webkit-app-region: no-drag;
 }
+
 button:active {
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   transform: translateY(1px);
 }
+
 .number {
   background-color: #dddddd;
   color: #000000;
 }
+
 .Addition,
 .Subtraction,
 .Multiplication,
@@ -70,16 +76,13 @@ button:active {
   background-color: #ff8800;
   color: #ffffff;
 }
+
 .clear {
   background-color: #cc0000;
   color: #ffffff;
 }
+
 .equals {
   background-color: #333333;
   color: #ffffff;
-}
-.display,
-.calculator-grid,
-button {
-  -webkit-app-region: no-drag;
 }

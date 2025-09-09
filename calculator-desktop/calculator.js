@@ -174,6 +174,7 @@ document.addEventListener("keydown", function (event) {
     console.log("Other key:", event.key);
   }
 });
+
 function handleBackspace() {
   if (waitingForValue) return;
   if (currentValue.length > 1) {
@@ -182,4 +183,27 @@ function handleBackspace() {
     currentValue = "0";
   }
   updateDisplay();
+}
+
+function minimizeWindow() {
+  console.log("Minimize clicked!"); // Debug
+  const { remote } = require("electron");
+  remote.getCurrentWindow().minimize();
+}
+
+function maximizeWindow() {
+  console.log("Maximize clicked!"); // Debug
+  const { remote } = require("electron");
+  const win = remote.getCurrentWindow();
+  if (win.isMaximized()) {
+    win.unmaximize();
+  } else {
+    win.maximize();
+  }
+}
+
+function closeWindow() {
+  console.log("Close clicked!"); // Debug
+  const { remote } = require("electron");
+  remote.getCurrentWindow().close();
 }
