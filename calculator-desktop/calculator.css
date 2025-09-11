@@ -140,3 +140,22 @@ button:active {
   background-color: #dddddd;
   color: #000000;
 }
+.mute-button {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  z-index: 1000;
+  width: 35px;
+  height: 30px;
+  transition: filter 0.2s ease;
+  -webkit-app-region: no-drag;
+}
+
+.mute-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}

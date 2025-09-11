@@ -2,6 +2,7 @@ let currentValue = "0";
 let previousValue = null;
 let operation = null;
 let waitingForValue = false;
+let isMuted = false;
 
 function inputNumber(number) {
   playNumberSound();
@@ -105,9 +106,7 @@ function equals() {
     operation = null;
     previousValue = null;
     waitingForValue = false;
-  } else {
-    console.log("❌ Conditions NOT met for calculate()");
-  }
+  } 
 }
 function clearCalculator() {
   playOperatorSound();
@@ -135,7 +134,7 @@ document.addEventListener("keydown", function (event) {
     playOperatorSound();
     inputOperation("/");
   } else if (event.key === "." || event.key === ",") {
-    playOperatorSound();
+    playNumberSound(); 
     inputNumber(event.key);
   } else if (event.key === "=" || event.key === "Enter") {
     playOperatorSound();
@@ -180,13 +179,31 @@ async function closeApp() {
 }
 
 function playNumberSound() {
+  if (isMuted) return;
   const audio = document.getElementById("numberSound");
   audio.currentTime = 0;
   audio.play().catch((e) => {});
 }
 
 function playOperatorSound() {
+  if (isMuted) return;
   const audio = document.getElementById("operatorSound");
   audio.currentTime = 0;
   audio.play().catch((e) => {});
+}
+
+function toggleMute() {
+  isMuted = !isMuted;
+
+  const unmuteIcon = document.getElementById("icon-unmute");
+  const muteIcon = document.getElementById("icon-mute");
+
+  // Show/hide mute/unmute svg:s
+  if (isMuted) {
+    muteIcon.style.display = "none";
+    unmuteIcon.style.display = "block";
+  } else {
+    unmuteIcon.style.display = "none";
+    muteIcon.style.display = "block";
+  }
 }

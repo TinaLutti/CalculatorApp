@@ -7,6 +7,38 @@
     <link rel="stylesheet" href="calculator.css" />
   </head>
   <body>
+    <button id="mute-btn" class="mute-button" onclick="toggleMute()">
+      <!-- UNMUTE (visas när ljud är AV) -->
+      <svg
+        id="icon-unmute"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 256 256"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="16"
+        style="display: none"
+      >
+        <path d="M88,168H40a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8H88l72-56V224Z" />
+      </svg>
+      <!-- MUTE (visas när ljud är PÅ) -->
+      <svg
+        id="icon-mute"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 256 256"
+        width="20"
+        height="20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="16"
+      >
+        <path d="M88,168H40a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8H88l72-56V224Z" />
+        <line x1="248" y1="104" x2="200" y2="152" />
+        <line x1="248" y1="152" x2="200" y2="104" />
+      </svg>
+    </button>
+
     <div class="window-controls">
       <button class="control-btn minimize-btn" onclick="minimizeApp()">
         −
