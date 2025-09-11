@@ -6,11 +6,11 @@ let waitingForValue = false;
 function inputNumber(number) {
   number = String(number);
 
-  // Allowing Swedish decimal (,)
+  // Turn , to . (Swedish decimal)
   if (number === ",") number = ".";
 
   if (waitingForValue) {
-    currentValue = number === "." ? "0." : number; 
+    currentValue = number === "." ? "0." : number;
     waitingForValue = false;
     updateDisplay();
     return;
@@ -97,7 +97,7 @@ function calculate() {
   updateDisplay();
 }
 function equals() {
-   if (operation && previousValue !== null && !waitingForValue) {
+  if (operation && previousValue !== null && !waitingForValue) {
     calculate();
     operation = null;
     previousValue = null;
@@ -115,11 +115,9 @@ function clearCalculator() {
 }
 
 document.addEventListener("keydown", function (event) {
-
   if (event.key >= "0" && event.key <= "9") {
     inputNumber(event.key);
   } else if (event.key === "+") {
-    console.log("Plus detected");
     inputOperation("+");
   } else if (event.key === "-") {
     inputOperation("-");
@@ -157,16 +155,13 @@ function handleBackspace() {
 const { ipcRenderer } = require("electron");
 
 async function minimizeApp() {
-  console.log("Minimize clicked!");
   await ipcRenderer.invoke("minimize-window");
 }
 
 async function maximizeApp() {
-  console.log("Maximize clicked!");
   await ipcRenderer.invoke("maximize-window");
 }
 
 async function closeApp() {
-  console.log("Close clicked!");
   await ipcRenderer.invoke("close-window");
 }
