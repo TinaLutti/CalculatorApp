@@ -1,16 +1,61 @@
 body {
   margin: 0;
   padding: 0;
-  background: #888888;
+  background: linear-gradient(145deg, #999999, #777777);
   overflow: hidden;
   -webkit-app-region: drag;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.window-controls {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  gap: 5px;
+  z-index: 1000;
+  -webkit-app-region: no-drag;
 }
 
 .calculator {
+  flex: 1;
   background: linear-gradient(145deg, #999999, #777777);
   padding: 15px;
-  width: 290px;
-  height: 315px;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.control-btn {
+  background: transparent;
+  border: none;
+  border-radius: 3;
+  box-shadow: none;
+  width: 35px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: filter 0.2s ease, background 0.2s ease;
+  -webkit-app-region: no-drag;
+}
+
+.window-controls .control-btn:hover {
+  filter: brightness(1.2);
+  background: rgba(200, 200, 200, 0.3);
+}
+
+.window-controls .close-btn:hover {
+  background: #cc0000;
+  color: white;
+  filter: none;
+}
+
+.close-btn:hover {
+  background: #cc0000;
+  color: white;
 }
 
 .display {
@@ -18,15 +63,16 @@ body {
   color: #ff0000;
   font-family: "Courier New", "Lucida Console", "Monaco", monospace;
   letter-spacing: 1px;
-  font-size: 24px;
+  font-size: max(32px, 7vh);
   text-align: right;
-  padding: 10px;
+  padding: max(10px, 1.5vh);
   border-radius: 10px;
   margin-bottom: 8px;
   border: 2px inset #333333;
   box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.8);
   text-shadow: 0 0 2px #ff0000, 0 0 5px #ff0000, 0 0 8px #ff0000,
     0 0 12px #ff4444;
+  min-height: 8vh;
 }
 
 .calculator-grid {
@@ -34,13 +80,13 @@ body {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   gap: 5px;
+  flex: 1;
 }
 
 .plus-tall,
 .equals-tall {
   grid-row: span 2;
   height: auto;
-  min-height: 95px;
 }
 
 .zero-wide {
@@ -48,15 +94,18 @@ body {
 }
 
 button {
-  height: 45px;
   border: 1px solid #666666;
   border-radius: 3px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  transition: all 0.1s ease;
+  transition: filter 0.2s ease;
   -webkit-app-region: no-drag;
+}
+
+button:hover {
+  filter: brightness(1.2);
 }
 
 button:active {
@@ -85,4 +134,9 @@ button:active {
 .equals {
   background-color: #333333;
   color: #ffffff;
+}
+
+.decimal {
+  background-color: #dddddd;
+  color: #000000;
 }
