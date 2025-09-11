@@ -4,6 +4,7 @@ let operation = null;
 let waitingForValue = false;
 
 function inputNumber(number) {
+  playNumberSound();
   number = String(number);
 
   // Turn , to . (Swedish decimal)
@@ -51,6 +52,7 @@ function updateDisplay() {
 }
 
 function inputOperation(op) {
+  playOperatorSound();
   if (previousValue === null) {
     previousValue = currentValue;
   } else if (!waitingForValue) {
@@ -97,6 +99,7 @@ function calculate() {
   updateDisplay();
 }
 function equals() {
+  playOperatorSound();
   if (operation && previousValue !== null && !waitingForValue) {
     calculate();
     operation = null;
@@ -107,6 +110,7 @@ function equals() {
   }
 }
 function clearCalculator() {
+  playOperatorSound();
   currentValue = "0";
   previousValue = null;
   operation = null;
@@ -116,25 +120,34 @@ function clearCalculator() {
 
 document.addEventListener("keydown", function (event) {
   if (event.key >= "0" && event.key <= "9") {
+    playNumberSound();
     inputNumber(event.key);
   } else if (event.key === "+") {
+    playOperatorSound();
     inputOperation("+");
   } else if (event.key === "-") {
+    playOperatorSound();
     inputOperation("-");
   } else if (event.key === "*") {
+    playOperatorSound();
     inputOperation("*");
   } else if (event.key === "/") {
+    playOperatorSound();
     inputOperation("/");
   } else if (event.key === "." || event.key === ",") {
+    playOperatorSound();
     inputNumber(event.key);
   } else if (event.key === "=" || event.key === "Enter") {
+    playOperatorSound();
     event.preventDefault();
     equals();
     return;
   } else if (event.key === "Escape" || event.key === "Delete") {
+    playOperatorSound();
     clearCalculator();
     return;
   } else if (event.key === "Backspace") {
+    playOperatorSound();
     handleBackspace();
     return;
   } else {
@@ -164,4 +177,16 @@ async function maximizeApp() {
 
 async function closeApp() {
   await ipcRenderer.invoke("close-window");
+}
+
+function playNumberSound() {
+  const audio = document.getElementById("numberSound");
+  audio.currentTime = 0;
+  audio.play().catch((e) => {});
+}
+
+function playOperatorSound() {
+  const audio = document.getElementById("operatorSound");
+  audio.currentTime = 0;
+  audio.play().catch((e) => {});
 }
