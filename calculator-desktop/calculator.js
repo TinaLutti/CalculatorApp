@@ -6,18 +6,17 @@ let waitingForValue = false;
 function inputNumber(number) {
   number = String(number);
 
-  // Tillåt svensk decimal från knapp (",") men räkna internt med "."
+  // Allowing Swedish decimal (,)
   if (number === ",") number = ".";
 
-  // Om vi precis valt operator och börjar skriva nästa tal
   if (waitingForValue) {
-    currentValue = number === "." ? "0." : number; // <- viktiga fixen
+    currentValue = number === "." ? "0." : number; 
     waitingForValue = false;
     updateDisplay();
     return;
   }
 
-  // Hindra dubbla decimaler
+  // Stopping dubbel decimal
   if (number === "." && String(currentValue).includes(".")) {
     return;
   }
@@ -38,11 +37,6 @@ function inputNumber(number) {
 }
 
 function updateDisplay() {
-  console.log("=== UPDATE DISPLAY DEBUG ===");
-  console.log("previousValue:", previousValue);
-  console.log("operation:", operation);
-  console.log("currentValue:", currentValue);
-
   if (previousValue && operation) {
     if (waitingForValue) {
       document.getElementById("display").textContent =
@@ -52,7 +46,6 @@ function updateDisplay() {
         previousValue + operation + currentValue;
     }
   } else {
-    console.log("Going to else - displaying currentValue:", currentValue);
     document.getElementById("display").textContent = currentValue;
   }
 }
@@ -69,22 +62,13 @@ function inputOperation(op) {
   updateDisplay();
 }
 function calculate() {
-  console.log("=== CALCULATE DEBUG ===");
-  console.log("previousValue:", previousValue, "type:", typeof previousValue);
-  console.log("currentValue:", currentValue, "type:", typeof currentValue);
-  console.log("operation:", operation);
-
   let result;
   let prev = parseFloat(previousValue);
   let curr = parseFloat(currentValue);
 
-  console.log("prev after parseFloat:", prev);
-  console.log("curr after parseFloat:", curr);
-
   switch (operation) {
     case "+":
       result = prev + curr;
-      console.log("Addition result:", result);
       break;
     case "-":
       result = prev - curr;
@@ -106,27 +90,14 @@ function calculate() {
     default:
       return;
   }
-  console.log("Final result:", result);
-
   currentValue = Math.round(result * 100000000) / 100000000;
-  console.log("After Math.round:", currentValue);
   currentValue = currentValue.toString();
-  console.log("After toString", currentValue);
   previousValue = null;
   operation = null;
-  console.log("Before updateDisplay - currentValue:", currentValue);
   updateDisplay();
-  console.log("After updateDisplay completed");
 }
 function equals() {
-  console.log("=== EQUALS DEBUG ===");
-  console.log("operation:", operation);
-  console.log("previousValue:", previousValue);
-  console.log("currentValue:", currentValue);
-  console.log("waitingForValue:", waitingForValue);
-
-  if (operation && previousValue !== null && !waitingForValue) {
-    console.log("✅ Conditions met - calling calculate()");
+   if (operation && previousValue !== null && !waitingForValue) {
     calculate();
     operation = null;
     previousValue = null;
@@ -144,10 +115,8 @@ function clearCalculator() {
 }
 
 document.addEventListener("keydown", function (event) {
-  console.log("Key pressed:", event.key);
 
   if (event.key >= "0" && event.key <= "9") {
-    console.log("Number detected:", event.key);
     inputNumber(event.key);
   } else if (event.key === "+") {
     console.log("Plus detected");
@@ -174,6 +143,7 @@ document.addEventListener("keydown", function (event) {
     console.log("Other key:", event.key);
   }
 });
+
 function handleBackspace() {
   if (waitingForValue) return;
   if (currentValue.length > 1) {
@@ -182,4 +152,21 @@ function handleBackspace() {
     currentValue = "0";
   }
   updateDisplay();
+}
+
+const { ipcRenderer } = require("electron");
+
+async function minimizeApp() {
+  console.log("Minimize clicked!");
+  await ipcRenderer.invoke("minimize-window");
+}
+
+async function maximizeApp() {
+  console.log("Maximize clicked!");
+  await ipcRenderer.invoke("maximize-window");
+}
+
+async function closeApp() {
+  console.log("Close clicked!");
+  await ipcRenderer.invoke("close-window");
 }
