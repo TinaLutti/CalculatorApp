@@ -7,6 +7,13 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  
+  /* Extra chunky pixel rendering */
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
 }
 
 .window-controls {
@@ -17,15 +24,6 @@ body {
   gap: 5px;
   z-index: 1000;
   -webkit-app-region: no-drag;
-}
-
-.calculator {
-  flex: 1;
-  background: linear-gradient(145deg, #999999, #777777);
-  padding: 15px;
-  padding-top: 40px;
-  display: flex;
-  flex-direction: column;
 }
 
 .control-btn {
@@ -53,93 +51,6 @@ body {
   filter: none;
 }
 
-.close-btn:hover {
-  background: #cc0000;
-  color: white;
-}
-
-.display {
-  background-color: #000000;
-  color: #ff0000;
-  font-family: "Courier New", "Lucida Console", "Monaco", monospace;
-  letter-spacing: 1px;
-  font-size: max(32px, 7vh);
-  text-align: right;
-  padding: max(10px, 1.5vh);
-  border-radius: 10px;
-  margin-bottom: 8px;
-  border: 2px inset #333333;
-  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.8);
-  text-shadow: 0 0 2px #ff0000, 0 0 5px #ff0000, 0 0 8px #ff0000,
-    0 0 12px #ff4444;
-  min-height: 8vh;
-}
-
-.calculator-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 5px;
-  flex: 1;
-}
-
-.plus-tall,
-.equals-tall {
-  grid-row: span 2;
-  height: auto;
-}
-
-.zero-wide {
-  grid-column: span 2;
-}
-
-button {
-  border: 1px solid #666666;
-  border-radius: 3px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  transition: filter 0.2s ease;
-  -webkit-app-region: no-drag;
-}
-
-button:hover {
-  filter: brightness(1.2);
-}
-
-button:active {
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  transform: translateY(1px);
-}
-
-.number {
-  background-color: #dddddd;
-  color: #000000;
-}
-
-.Addition,
-.Subtraction,
-.Multiplication,
-.Division {
-  background-color: #ff8800;
-  color: #ffffff;
-}
-
-.clear {
-  background-color: #cc0000;
-  color: #ffffff;
-}
-
-.equals {
-  background-color: #333333;
-  color: #ffffff;
-}
-
-.decimal {
-  background-color: #dddddd;
-  color: #000000;
-}
 .mute-button {
   position: fixed;
   top: 5px;
@@ -159,4 +70,240 @@ button:active {
 .mute-button:hover {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 3px;
+}
+
+.calculator {
+  flex: 1;
+  background: #ff9900;
+  padding: 20px;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
+  
+  /* CHUNKY pixel borders - mycket tjockare! */
+  border: 8px solid;
+  border-color: #ffcc44 #cc6600 #cc6600 #ffcc44;
+  
+  /* Extra chunky inner border */
+  box-shadow: 
+    inset 4px 4px 0 #ffaa22,
+    inset -4px -4px 0 #aa4400;
+}
+
+.display {
+  background: linear-gradient(90deg, #ffee88 0%, #ffdd55 100%);
+  color: #cc0000;
+  font-family: "Courier New", "Lucida Console", "Monaco", monospace;
+  letter-spacing: 3px;
+  font-size: max(32px, 7vh);
+  text-align: right;
+  padding: max(15px, 2vh);
+  margin-bottom: 15px;
+  border-radius: 0;
+  
+  /* CHUNKY borders - mycket tjockare än innan */
+  border: 6px solid;
+  border-color: #aa8800 #ffaa00 #ffaa00 #aa8800;
+  
+  /* Chunky inset effect */
+  box-shadow: 
+    inset 3px 3px 0 #ffcc22,
+    inset -3px -3px 0 #aa6600;
+  
+  min-height: 8vh;
+  font-weight: bold;
+  
+  /* Reflex-effekt som diagonal stripes */
+  background-image: 
+    linear-gradient(135deg, rgba(255,255,255,0.4) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(255,255,255,0.4) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(255,255,255,0.2) 25%, transparent 25%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.calculator-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 8px; /* Större gap för chunky känla */
+  flex: 1;
+}
+
+.plus-tall,
+.equals-tall {
+  grid-row: span 2;
+  height: auto;
+}
+
+.zero-wide {
+  grid-column: span 2;
+}
+
+button {
+  border: none;
+  border-radius: 0;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Courier New", monospace;
+  transition: none; /* Inga smooth transitions */
+  -webkit-app-region: no-drag;
+  
+  /* CHUNKY borders - mycket tjockare än innan! */
+  border: 5px solid;
+  
+  /* Pixlig text rendering */
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+
+.number {
+  background: #ffccaa;
+  color: #cc0000;
+  
+  /* CHUNKY 3D-borders */
+  border-color: #ffffff #cc8866 #cc8866 #ffffff;
+  
+  /* Extra chunky depth effect */
+  box-shadow: 
+    3px 3px 0 #aa6644,    /* Chunky drop shadow */
+    6px 6px 0 #884422;    /* Extra chunky outer shadow */
+}
+
+.number:hover {
+  background: #ffddbb;
+  /* Hover glow effect */
+  box-shadow: 
+    3px 3px 0 #aa6644,
+    6px 6px 0 #884422,
+    0 0 0 2px #ffee88;    /* Chunky glow */
+}
+
+.number:active {
+  background: #eeaa88;
+  border-color: #cc8866 #ffffff #ffffff #cc8866;
+  /* Pressed in effect */
+  box-shadow: 
+    inset 3px 3px 0 #aa6644,
+    inset 6px 6px 0 #884422;
+}
+
+.Addition,
+.Subtraction,
+.Multiplication,
+.Division {
+  background: #ff8800;
+  color: #ffffff;
+  
+  border-color: #ffaa22 #cc4400 #cc4400 #ffaa22;
+  
+  box-shadow: 
+    3px 3px 0 #aa4400,
+    6px 6px 0 #882200;
+}
+
+.Addition:hover,
+.Subtraction:hover,
+.Multiplication:hover,
+.Division:hover {
+  background: #ff9911;
+  box-shadow: 
+    3px 3px 0 #aa4400,
+    6px 6px 0 #882200,
+    0 0 0 2px #ffcc44;
+}
+
+.Addition:active,
+.Subtraction:active,
+.Multiplication:active,
+.Division:active {
+  background: #ee7700;
+  border-color: #cc4400 #ffaa22 #ffaa22 #cc4400;
+  box-shadow: 
+    inset 3px 3px 0 #aa4400,
+    inset 6px 6px 0 #882200;
+}
+
+.clear {
+  background: #cc0000;
+  color: #ffffff;
+  
+  border-color: #ff3333 #880000 #880000 #ff3333;
+  
+  box-shadow: 
+    3px 3px 0 #880000,
+    6px 6px 0 #440000;
+}
+
+.clear:hover {
+  background: #dd1111;
+  box-shadow: 
+    3px 3px 0 #880000,
+    6px 6px 0 #440000,
+    0 0 0 2px #ff6666;
+}
+
+.clear:active {
+  background: #bb0000;
+  border-color: #880000 #ff3333 #ff3333 #880000;
+  box-shadow: 
+    inset 3px 3px 0 #880000,
+    inset 6px 6px 0 #440000;
+}
+
+.equals {
+  background: #ee4400;
+  color: #ffffff;
+  
+  border-color: #ff6622 #aa2200 #aa2200 #ff6622;
+  
+  box-shadow: 
+    3px 3px 0 #aa2200,
+    6px 6px 0 #661100;
+}
+
+.equals:hover {
+  background: #ff5511;
+  box-shadow: 
+    3px 3px 0 #aa2200,
+    6px 6px 0 #661100,
+    0 0 0 2px #ff8844;
+}
+
+.equals:active {
+  background: #dd3300;
+  border-color: #aa2200 #ff6622 #ff6622 #aa2200;
+  box-shadow: 
+    inset 3px 3px 0 #aa2200,
+    inset 6px 6px 0 #661100;
+}
+
+.decimal {
+  background: #ffccaa;
+  color: #cc0000;
+  
+  border-color: #ffffff #cc8866 #cc8866 #ffffff;
+  
+  box-shadow: 
+    3px 3px 0 #aa6644,
+    6px 6px 0 #884422;
+  }
+
+.decimal:hover {
+  background: #ffddbb;
+  box-shadow: 
+    3px 3px 0 #aa6644,
+    6px 6px 0 #884422,
+    0 0 0 2px #ffee88;
+}
+
+.decimal:active {
+  background: #eeaa88;
+  border-color: #cc8866 #ffffff #ffffff #cc8866;
+  box-shadow: 
+    inset 3px 3px 0 #aa6644,
+    inset 6px 6px 0 #884422;
 }
