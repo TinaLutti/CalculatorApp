@@ -2,7 +2,7 @@ let currentValue = "0";
 let previousValue = null;
 let operation = null;
 let waitingForValue = false;
-let isMuted = false;
+let isMuted = true;
 
 function inputNumber(number) {
   playNumberSound();
@@ -106,7 +106,7 @@ function equals() {
     operation = null;
     previousValue = null;
     waitingForValue = false;
-  } 
+  }
 }
 function clearCalculator() {
   playOperatorSound();
@@ -134,7 +134,7 @@ document.addEventListener("keydown", function (event) {
     playOperatorSound();
     inputOperation("/");
   } else if (event.key === "." || event.key === ",") {
-    playNumberSound(); 
+    playNumberSound();
     inputNumber(event.key);
   } else if (event.key === "=" || event.key === "Enter") {
     playOperatorSound();

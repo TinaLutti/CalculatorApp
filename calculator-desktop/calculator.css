@@ -12,7 +12,7 @@ body {
 .window-controls {
   position: fixed;
   top: 5px;
-  right: 5px;
+  right: 15px;
   display: flex;
   gap: 5px;
   z-index: 1000;
@@ -143,8 +143,9 @@ button:active {
 .mute-button {
   position: fixed;
   top: 5px;
-  left: 5px;
+  left: 15px;
   background: transparent;
+  box-shadow: none;
   border: none;
   cursor: pointer;
   color: #333;
