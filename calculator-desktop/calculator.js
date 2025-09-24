@@ -17,6 +17,9 @@ function inputNumber(number) {
     updateDisplay();
     return;
   }
+  if (String(currentValue).length >= 12) {
+    return; // Stoppa input vid 12 tecken
+  }
 
   // Stopping dubbel decimal
   if (number === "." && String(currentValue).includes(".")) {
@@ -39,6 +42,11 @@ function inputNumber(number) {
 }
 
 function updateDisplay() {
+  if (currentValue.length > 12) {
+    //Display max length 12
+    currentValue = currentValue.slice(0, 12);
+  }
+
   if (previousValue && operation) {
     if (waitingForValue) {
       document.getElementById("display").textContent =
