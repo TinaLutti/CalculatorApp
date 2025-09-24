@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Digital-7";
+  src: url("fonts/digital_7/digital-7\ \(mono\).ttf") format("truetype");
+}
 body {
   margin: 0;
   padding: 0;
@@ -7,8 +11,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  
-  /* Extra chunky pixel rendering */
+
+  /* Chunky pixel rendering */
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
@@ -74,61 +78,40 @@ body {
 
 .calculator {
   flex: 1;
-  background: #ff9900;
+  background: #ff9500;
   padding: 20px;
   padding-top: 50px;
   display: flex;
   flex-direction: column;
   border-radius: 0;
-  
-  /* CHUNKY pixel borders - mycket tjockare! */
   border: 8px solid;
-  border-color: #ffcc44 #cc6600 #cc6600 #ffcc44;
-  
-  /* Extra chunky inner border */
-  box-shadow: 
-    inset 4px 4px 0 #ffaa22,
-    inset -4px -4px 0 #aa4400;
+  border-color: #ffcc66 #cc6600 #cc6600 #ffcc66;
+  box-shadow: inset 4px 4px 0 #ffb84d, inset -4px -4px 0 #b8660a;
 }
 
 .display {
-  background: linear-gradient(90deg, #ffee88 0%, #ffdd55 100%);
-  color: #cc0000;
-  font-family: "Courier New", "Lucida Console", "Monaco", monospace;
-  letter-spacing: 3px;
-  font-size: max(32px, 7vh);
+  background: #000000;
+  color: #ff0000;
+  text-shadow: 0 0 2px #ff3333;
+  font-family: "Digital-7", monospace;
+  letter-spacing: 2px;
+  font-size: max(40px, 7vh);
   text-align: right;
   padding: max(15px, 2vh);
   margin-bottom: 15px;
   border-radius: 0;
-  
-  /* CHUNKY borders - mycket tjockare än innan */
   border: 6px solid;
-  border-color: #aa8800 #ffaa00 #ffaa00 #aa8800;
-  
-  /* Chunky inset effect */
-  box-shadow: 
-    inset 3px 3px 0 #ffcc22,
-    inset -3px -3px 0 #aa6600;
-  
+  border-color: #333333 #666666 #666666 #333333;
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.8), inset -3px -3px 0 #444444;
   min-height: 8vh;
   font-weight: bold;
-  
-  /* Reflex-effekt som diagonal stripes */
-  background-image: 
-    linear-gradient(135deg, rgba(255,255,255,0.4) 25%, transparent 25%),
-    linear-gradient(225deg, rgba(255,255,255,0.4) 25%, transparent 25%),
-    linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%),
-    linear-gradient(315deg, rgba(255,255,255,0.2) 25%, transparent 25%);
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
 
 .calculator-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  gap: 8px; /* Större gap för chunky känla */
+  gap: 8px;
   flex: 1;
 }
 
@@ -145,165 +128,112 @@ body {
 button {
   border: none;
   border-radius: 0;
-  font-size: 20px;
+  font-size: max(20px, 4vh);
   font-weight: bold;
   cursor: pointer;
   font-family: "Courier New", monospace;
-  transition: none; /* Inga smooth transitions */
+  transition: none;
   -webkit-app-region: no-drag;
-  
-  /* CHUNKY borders - mycket tjockare än innan! */
   border: 5px solid;
-  
-  /* Pixlig text rendering */
   font-smooth: never;
   -webkit-font-smoothing: none;
 }
 
 .number {
-  background: #ffccaa;
-  color: #cc0000;
-  
-  /* CHUNKY 3D-borders */
-  border-color: #ffffff #cc8866 #cc8866 #ffffff;
-  
-  /* Extra chunky depth effect */
-  box-shadow: 
-    3px 3px 0 #aa6644,    /* Chunky drop shadow */
-    6px 6px 0 #884422;    /* Extra chunky outer shadow */
+  background: #f5f5dc;
+  color: #333333;
+  border-color: #ffffff #cccccc #cccccc #ffffff;
+  box-shadow: 3px 3px 0 #aaaaaa, 6px 6px 0 #888888;
 }
 
 .number:hover {
-  background: #ffddbb;
-  /* Hover glow effect */
-  box-shadow: 
-    3px 3px 0 #aa6644,
-    6px 6px 0 #884422,
-    0 0 0 2px #ffee88;    /* Chunky glow */
+  background: #fffacd;
+  box-shadow: 3px 3px 0 #aaaaaa, 6px 6px 0 #888888, 0 0 0 2px #ffb84d;
 }
 
 .number:active {
-  background: #eeaa88;
-  border-color: #cc8866 #ffffff #ffffff #cc8866;
-  /* Pressed in effect */
-  box-shadow: 
-    inset 3px 3px 0 #aa6644,
-    inset 6px 6px 0 #884422;
+  background: #e6e6b8; /* Darker beige when pressed */
+  border-color: #cccccc #ffffff #ffffff #cccccc;
+  box-shadow: inset 3px 3px 0 #aaaaaa, inset 6px 6px 0 #888888;
 }
 
 .Addition,
 .Subtraction,
 .Multiplication,
 .Division {
-  background: #ff8800;
+  background: #ffb84d;
   color: #ffffff;
-  
-  border-color: #ffaa22 #cc4400 #cc4400 #ffaa22;
-  
-  box-shadow: 
-    3px 3px 0 #aa4400,
-    6px 6px 0 #882200;
+  border-color: #ffd480 #cc8800 #cc8800 #ffd480;
+  box-shadow: 3px 3px 0 #cc8800, 6px 6px 0 #aa6600;
 }
 
 .Addition:hover,
 .Subtraction:hover,
 .Multiplication:hover,
 .Division:hover {
-  background: #ff9911;
-  box-shadow: 
-    3px 3px 0 #aa4400,
-    6px 6px 0 #882200,
-    0 0 0 2px #ffcc44;
+  background: #ffcc66;
+  box-shadow: 3px 3px 0 #cc8800, 6px 6px 0 #aa6600, 0 0 0 2px #ffd480;
 }
 
 .Addition:active,
 .Subtraction:active,
 .Multiplication:active,
 .Division:active {
-  background: #ee7700;
-  border-color: #cc4400 #ffaa22 #ffaa22 #cc4400;
-  box-shadow: 
-    inset 3px 3px 0 #aa4400,
-    inset 6px 6px 0 #882200;
+  background: #e6a533; /* Darker when pressed */
+  border-color: #cc8800 #ffd480 #ffd480 #cc8800;
+  box-shadow: inset 3px 3px 0 #cc8800, inset 6px 6px 0 #aa6600;
 }
 
 .clear {
-  background: #cc0000;
+  background: #ff3300;
   color: #ffffff;
-  
-  border-color: #ff3333 #880000 #880000 #ff3333;
-  
-  box-shadow: 
-    3px 3px 0 #880000,
-    6px 6px 0 #440000;
+  border-color: #ff6633 #cc0000 #cc0000 #ff6633;
+  box-shadow: 3px 3px 0 #cc0000, 6px 6px 0 #990000;
 }
 
 .clear:hover {
-  background: #dd1111;
-  box-shadow: 
-    3px 3px 0 #880000,
-    6px 6px 0 #440000,
-    0 0 0 2px #ff6666;
+  background: #ff4d4d; /* Brighter red on hover */
+  box-shadow: 3px 3px 0 #cc0000, 6px 6px 0 #990000, 0 0 0 2px #ff6633;
 }
 
 .clear:active {
-  background: #bb0000;
-  border-color: #880000 #ff3333 #ff3333 #880000;
-  box-shadow: 
-    inset 3px 3px 0 #880000,
-    inset 6px 6px 0 #440000;
+  background: #e60000; /* Darker red when pressed */
+  border-color: #cc0000 #ff6633 #ff6633 #cc0000;
+  box-shadow: inset 3px 3px 0 #cc0000, inset 6px 6px 0 #990000;
 }
 
 .equals {
-  background: #ee4400;
+  background: #ff6600;
   color: #ffffff;
-  
-  border-color: #ff6622 #aa2200 #aa2200 #ff6622;
-  
-  box-shadow: 
-    3px 3px 0 #aa2200,
-    6px 6px 0 #661100;
+  border-color: #ff9933 #cc3300 #cc3300 #ff9933;
+  box-shadow: 3px 3px 0 #cc3300, 6px 6px 0 #990000;
 }
 
 .equals:hover {
-  background: #ff5511;
-  box-shadow: 
-    3px 3px 0 #aa2200,
-    6px 6px 0 #661100,
-    0 0 0 2px #ff8844;
+  background: #ff8033; /* Brighter on hover */
+  box-shadow: 3px 3px 0 #cc3300, 6px 6px 0 #990000, 0 0 0 2px #ff9933;
 }
 
 .equals:active {
-  background: #dd3300;
-  border-color: #aa2200 #ff6622 #ff6622 #aa2200;
-  box-shadow: 
-    inset 3px 3px 0 #aa2200,
-    inset 6px 6px 0 #661100;
+  background: #e64d00; /* Darker when pressed */
+  border-color: #cc3300 #ff9933 #ff9933 #cc3300;
+  box-shadow: inset 3px 3px 0 #cc3300, inset 6px 6px 0 #990000;
 }
 
 .decimal {
-  background: #ffccaa;
-  color: #cc0000;
-  
-  border-color: #ffffff #cc8866 #cc8866 #ffffff;
-  
-  box-shadow: 
-    3px 3px 0 #aa6644,
-    6px 6px 0 #884422;
-  }
+  background: #f5f5dc;
+  color: #333333;
+  border-color: #ffffff #cccccc #cccccc #ffffff;
+  box-shadow: 3px 3px 0 #aaaaaa, 6px 6px 0 #888888;
+}
 
 .decimal:hover {
-  background: #ffddbb;
-  box-shadow: 
-    3px 3px 0 #aa6644,
-    6px 6px 0 #884422,
-    0 0 0 2px #ffee88;
+  background: #fffacd;
+  box-shadow: 3px 3px 0 #aaaaaa, 6px 6px 0 #888888, 0 0 0 2px #ffb84d;
 }
 
 .decimal:active {
-  background: #eeaa88;
-  border-color: #cc8866 #ffffff #ffffff #cc8866;
-  box-shadow: 
-    inset 3px 3px 0 #aa6644,
-    inset 6px 6px 0 #884422;
+  background: #e6e6b8; /* Darker beige when pressed */
+  border-color: #cccccc #ffffff #ffffff #cccccc;
+  box-shadow: inset 3px 3px 0 #aaaaaa, inset 6px 6px 0 #888888;
 }
