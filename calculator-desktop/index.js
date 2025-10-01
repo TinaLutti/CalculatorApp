@@ -3,7 +3,7 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 340,
-    height: 380,
+    height: 390,
     frame: false,
     resizable: true,
     alwaysOnTop: true,
@@ -13,7 +13,7 @@ function createWindow() {
     },
   });
 
-  // Lyssna på meddelanden från renderer
+  // Listening to messages from renderer
   ipcMain.handle("minimize-window", () => {
     mainWindow.minimize();
   });
