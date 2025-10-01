@@ -18,7 +18,7 @@ function inputNumber(number) {
     return;
   }
   if (String(currentValue).length >= 12) {
-    return; // Stoppa input vid 12 tecken
+    return; // Max 12 digits
   }
 
   // Stopping dubbel decimal
@@ -43,23 +43,20 @@ function inputNumber(number) {
 
 function updateDisplay() {
   if (currentValue.length > 12) {
-    //Display max length 12
     currentValue = currentValue.slice(0, 12);
   }
 
+  // Shows currentValue in main display
+  document.getElementById("display").textContent = currentValue;
+
+  // Show operation status in separate indicator
+  const indicator = document.getElementById("operation-indicator");
   if (previousValue && operation) {
-    if (waitingForValue) {
-      document.getElementById("display").textContent =
-        previousValue + operation;
-    } else {
-      document.getElementById("display").textContent =
-        previousValue + operation + currentValue;
-    }
+    indicator.textContent = previousValue + " " + operation;
   } else {
-    document.getElementById("display").textContent = currentValue;
+    indicator.textContent = ""; // Empty when no operator is active
   }
 }
-
 function inputOperation(op) {
   playOperatorSound();
   if (previousValue === null) {
@@ -90,6 +87,7 @@ function calculate() {
     case "/":
       if (curr === 0) {
         document.getElementById("display").textContent = "Error";
+        document.getElementById("operation-indicator").textContent = "";
         currentValue = "0";
         previousValue = null;
         operation = null;
@@ -97,15 +95,21 @@ function calculate() {
       }
       result = prev / curr;
       break;
-
     default:
       return;
   }
+
+  // Showing the ecvation in indicator before updating currentValue
+  document.getElementById("operation-indicator").textContent =
+    previousValue + " " + operation + " " + currentValue + " =";
+
   currentValue = Math.round(result * 100000000) / 100000000;
   currentValue = currentValue.toString();
   previousValue = null;
   operation = null;
-  updateDisplay();
+
+  // Updating display (not indicator)
+  document.getElementById("display").textContent = currentValue;
 }
 function equals() {
   playOperatorSound();
