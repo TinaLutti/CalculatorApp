@@ -172,6 +172,12 @@ button {
   box-shadow: inset 3px 3px 0 #aaaaaa, inset 6px 6px 0 #888888;
 }
 
+.number.active-key {
+  background: #e6e6b8; /* Darker beige when pressed */
+  border-color: #cccccc #ffffff #ffffff #cccccc;
+  box-shadow: inset 3px 3px 0 #aaaaaa, inset 6px 6px 0 #888888;
+}
+
 .Addition,
 .Subtraction,
 .Multiplication,
@@ -199,6 +205,15 @@ button {
   box-shadow: inset 3px 3px 0 #cc8800, inset 6px 6px 0 #aa6600;
 }
 
+.Addition.active-key,
+.Subtraction.active-key,
+.Multiplication.active-key,
+.Division.active-key {
+  background: #e6a533; /* Darker when pressed */
+  border-color: #cc8800 #ffd480 #ffd480 #cc8800;
+  box-shadow: inset 3px 3px 0 #cc8800, inset 6px 6px 0 #aa6600;
+}
+
 .clear {
   background: #ff3300;
   color: #ffffff;
@@ -212,6 +227,12 @@ button {
 }
 
 .clear:active {
+  background: #e60000; /* Darker red when pressed */
+  border-color: #cc0000 #ff6633 #ff6633 #cc0000;
+  box-shadow: inset 3px 3px 0 #cc0000, inset 6px 6px 0 #990000;
+}
+
+.clear.active-key {
   background: #e60000; /* Darker red when pressed */
   border-color: #cc0000 #ff6633 #ff6633 #cc0000;
   box-shadow: inset 3px 3px 0 #cc0000, inset 6px 6px 0 #990000;
@@ -235,6 +256,11 @@ button {
   box-shadow: inset 3px 3px 0 #cc3300, inset 6px 6px 0 #990000;
 }
 
+.equals.active-key {
+  background: #e64d00; /* Darker when pressed */
+  border-color: #cc3300 #ff9933 #ff9933 #cc3300;
+  box-shadow: inset 3px 3px 0 #cc3300, inset 6px 6px 0 #990000;
+}
 .decimal {
   background: #f5f5dc;
   color: #333333;
@@ -248,6 +274,12 @@ button {
 }
 
 .decimal:active {
+  background: #e6e6b8; /* Darker beige when pressed */
+  border-color: #cccccc #ffffff #ffffff #cccccc;
+  box-shadow: inset 3px 3px 0 #aaaaaa, inset 6px 6px 0 #888888;
+}
+
+.decimal.active-key {
   background: #e6e6b8; /* Darker beige when pressed */
   border-color: #cccccc #ffffff #ffffff #cccccc;
   box-shadow: inset 3px 3px 0 #aaaaaa, inset 6px 6px 0 #888888;

@@ -219,3 +219,67 @@ function toggleMute() {
     unmuteIcon.style.display = "block";
   }
 }
+
+let keyMap = {
+  // Maping keys to html
+  0: "key-0",
+  1: "key-1",
+  2: "key-2",
+  3: "key-3",
+  4: "key-4",
+  5: "key-5",
+  6: "key-6",
+  7: "key-7",
+  8: "key-8",
+  9: "key-9",
+
+  "+": "key-plus",
+  "-": "key-minus",
+  "*": "key-multiply",
+  "/": "key-divide",
+
+  Enter: "key-equals",
+  "=": "key-equals", // Enter and =  can be used
+  ".": "key-decimal",
+  ",": "key-decimal", // . and , can be used
+
+  Escape: "key-clear",
+  Backspace: "key-clear",
+};
+
+function handleKeyDown(event) {
+  let key = event.key;
+  let buttonId = keyMap[key];
+
+  if (!buttonId) {
+    return;
+  }
+
+  let button = document.getElementById(buttonId);
+
+  if (!button) {
+    return;
+  }
+
+  button.classList.add("active-key");
+}
+
+function handleKeyUp(event) {
+  let key = event.key;
+  let buttonId = keyMap[key];
+
+  if (!buttonId) {
+    return;
+  }
+
+  let button = document.getElementById(buttonId);
+
+  if (!button) {
+    return;
+  }
+
+  button.classList.remove("active-key");
+}
+
+document.addEventListener("keydown", handleKeyDown);
+document.addEventListener("keyup", handleKeyUp);

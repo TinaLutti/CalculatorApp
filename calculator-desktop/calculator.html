@@ -55,49 +55,50 @@
         <div class="display" id="display">0</div>
       </div>
       <div class="calculator-grid">
-        <button type="button" onclick="clearCalculator()" class="clear">
+        <button type="button" id="key-clear" onclick="clearCalculator()" class="clear">
           C
         </button>
-        <button type="button" onclick="inputOperation('/')" class="Division">
+        <button type="button" id="key-divide" onclick="inputOperation('/')" class="Division">
           /
         </button>
         <button
           type="button"
+          id="key-multiply"
           onclick="inputOperation('*')"
           class="Multiplication"
         >
           *
         </button>
-        <button type="button" onclick="inputOperation('-')" class="Subtraction">
+        <button type="button" id="key-minus" onclick="inputOperation('-')" class="Subtraction">
           -
         </button>
 
-        <button type="button" onclick="inputNumber(7)" class="number">7</button>
-        <button type="button" onclick="inputNumber(8)" class="number">8</button>
-        <button type="button" onclick="inputNumber(9)" class="number">9</button>
+        <button type="button" id ="key-7" onclick="inputNumber(7)" class="number">7</button>
+        <button type="button" id ="key-8" onclick="inputNumber(8)" class="number">8</button>
+        <button type="button" id = "key-9"onclick="inputNumber(9)" class="number">9</button>
         <button
-          type="button"
+          type="button" id ="key-plus"
           onclick="inputOperation('+')"
           class="Addition plus-tall"
         >
           +
         </button>
 
-        <button type="button" onclick="inputNumber(4)" class="number">4</button>
-        <button type="button" onclick="inputNumber(5)" class="number">5</button>
-        <button type="button" onclick="inputNumber(6)" class="number">6</button>
+        <button type="button" id ="key-4" onclick="inputNumber(4)" class="number">4</button>
+        <button type="button" id="key-5" onclick="inputNumber(5)" class="number">5</button>
+        <button type="button" id="key-6" onclick="inputNumber(6)" class="number">6</button>
 
-        <button type="button" onclick="inputNumber(1)" class="number">1</button>
-        <button type="button" onclick="inputNumber(2)" class="number">2</button>
-        <button type="button" onclick="inputNumber(3)" class="number">3</button>
-        <button type="button" onclick="equals()" class="equals equals-tall">
+        <button type="button" id="key-1" onclick="inputNumber(1)" class="number">1</button>
+        <button type="button" id="key-2" onclick="inputNumber(2)" class="number">2</button>
+        <button type="button" id="key-3" onclick="inputNumber(3)" class="number">3</button>
+        <button type="button" id="key-equals" onclick="equals()" class="equals equals-tall">
           =
         </button>
 
-        <button type="button" onclick="inputNumber(0)" class="number zero-wide">
+        <button type="button" id="key-0" onclick="inputNumber(0)" class="number zero-wide">
           0
         </button>
-        <button type="button" onclick="inputNumber('.')" class="decimal">
+        <button type="button" id="key-decimal" onclick="inputNumber('.')" class="decimal">
           .
         </button>
       </div>
