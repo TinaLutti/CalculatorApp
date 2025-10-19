@@ -212,10 +212,10 @@ function toggleMute() {
 
   // Show/hide mute/unmute svg:s
   if (isMuted) {
-    muteIcon.style.display = "none";
-    unmuteIcon.style.display = "block";
-  } else {
     unmuteIcon.style.display = "none";
     muteIcon.style.display = "block";
+  } else {
+    muteIcon.style.display = "none";
+    unmuteIcon.style.display = "block";
   }
 }
